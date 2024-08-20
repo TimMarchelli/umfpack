@@ -78,6 +78,32 @@
 #define UMFPACK_ARCHITECTURE "unknown"
 #endif
 
+/* -------------------------------------------------------------------------- */
+/* pragmas */
+/* -------------------------------------------------------------------------- */
+#if defined(SUPPORT_IVDEP)
+	#define UMF_PRAGMA_IVDEP _Pragma( "ivdep" )
+#elif defined(SUPPORT_LOOP_IVDEP)
+	#define UMF_PRAGMA_IVDEP _Pragma( "loop( ivdep )" )
+#elif defined(SUPPORT_GCC_IVDEP)
+	#define UMF_PRAGMA_IVDEP _Pragma( "GCC ivdep" )
+#elif defined(SUPPORT_LOOP_VECTORIZE)
+	#define UMF_PRAGMA_IVDEP _Pragma( "clang loop vectorize(enable)" )
+#else
+	#define UMF_PRAGMA_IVDEP
+#endif
+
+#if defined(SUPPORT_NOVECTOR)
+	#define UMF_PRAGMA_NOVECTOR _Pragma( "novector" )
+#elif defined(SUPPORT_LOOP_NOVECTOR)
+	#define UMF_PRAGMA_NOVECTOR _Pragma( "loop( no_vector )" )
+#elif defined(SUPPORT_GCC_NOVECTOR)
+	#define UMF_PRAGMA_NOVECTOR _Pragma( "GCC novector" )
+#elif defined(SUPPORT_LOOP_NOVECTORIZE)
+	#define UMF_PRAGMA_NOVECTOR _Pragma( "clang loop vectorize(disable)" )
+#else
+	#define UMF_PRAGMA_NOVECTOR
+#endif
 
 /* -------------------------------------------------------------------------- */
 /* basic definitions (see also amd_internal.h) */
