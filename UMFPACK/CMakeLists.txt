@@ -34,6 +34,11 @@ elseif(SUPPORT_LOOP_NOVECTORIZE)
     set(UMFPACK_DEFINE_NOVECTOR "SUPPORT_LOOP_NOVECTORIZE")
 endif()
 
+# umfpack needs fPIC to use some globals in amd when build as shared
+if(UNIX AND BUILD_SHARED_LIBS)
+    add_compile_options("-fPIC")
+endif()
+
 # get the lists
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/umfpack.cmake)
 

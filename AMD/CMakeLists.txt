@@ -64,6 +64,11 @@ target_include_directories(amd
         ${config_dir}
 )
 
+# link to math library if unix
+if(UNIX)
+    target_link_libraries(amd m)
+endif()
+
 # set name of output library
 set_target_properties(amd PROPERTIES OUTPUT_NAME ${lib_prefix}amd)
 

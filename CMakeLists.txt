@@ -6,20 +6,6 @@ project(umfpack C)
 option(BUILD_DEMOS "Build AMD and UMFPACK demos." OFF)
 option(BUILD_SHARED_LIBS "Build shared libraries (.dll/.so) instead of static ones (.lib/.a)" ON)
 
-# detect if compiling with Clang using MSVC linker
-if((CMAKE_C_COMPILER_ID STREQUAL "Clang") AND (CMAKE_C_COMPILER_LINKER_FRONTEND_VARIANT STREQUAL "MSVC"))
-    set(CLANG_MSVC_LINK ON)
-else()
-    set(CLANG_MSVC_LINK OFF)
-endif()
-
-# create a DLL to handle header switch so globals in amd, camd, colamd, ccolamd are imported properly
-if(BUILD_SHARED_LIBS AND (MSVC OR CLANG_MSVC_LINK))
-    set(BUILD_DLL ON)
-else()
-    set(BUILD_DLL OFF)
-endif()
-
 # default install location vars and configuration build tool
 include(GNUInstallDirs)
 include(CMakePackageConfigHelpers)
@@ -28,7 +14,7 @@ include(CMakePackageConfigHelpers)
 set(config_dir ${CMAKE_CURRENT_SOURCE_DIR}/UFconfig)
 
 # set lib prefix for libraries in windows
-if(MSVC OR CLANG_MSVC_LINK)
+if(WIN32)
     set(lib_prefix "lib")
     set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
 endif()
@@ -41,9 +27,14 @@ find_package(OpenBLAS CONFIG REQUIRED)
 
 # modify install targets
 set(INSTALL_RUNTIME_DIR ${CMAKE_INSTALL_BINDIR})
-set(INSTALL_CONFIG_DIR  ${CMAKE_INSTALL_LIBDIR}/cmake)
+set(INSTALL_CONFIG_DIR  ${CMAKE_INSTALL_LIBDIR}/cmake/umfpack)
 set(INSTALL_LIBRARY_DIR ${CMAKE_INSTALL_LIBDIR})
 set(INSTALL_INCLUDE_DIR ${CMAKE_INSTALL_INCLUDEDIR}/umfpack)
+
+# rpath
+if(NOT APPLE)
+    set(CMAKE_INSTALL_RPATH $ORIGIN)
+endif()
 
 # build the libraries
 add_subdirectory(AMD)
@@ -51,6 +42,17 @@ add_subdirectory(UMFPACK)
 
 # add an alias
 add_library(umfpack::umfpack ALIAS umfpack)
+
+# set versions
+set_target_properties(amd PROPERTIES
+    SOVERSION 2
+    VERSION 2.2.0
+)
+
+set_target_properties(umfpack PROPERTIES 
+    SOVERSION 5
+    VERSION   5.1.0
+)
 
 # set a project config file to enable linking to libraries in the build directory
 set(PROJECT_CONFIG_FILE "${CMAKE_BINARY_DIR}/umfpack-config.cmake")
