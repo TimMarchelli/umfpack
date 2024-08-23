@@ -53,7 +53,7 @@ target_include_directories(umfpack
 # link to trailing underscore BLAS names
 target_compile_definitions(umfpack PUBLIC BLAS_UNDERSCORE)
 
-target_link_libraries(umfpack PRIVATE amd OpenBLAS::OpenBLAS)
+target_link_libraries(umfpack PRIVATE amd BLAS::BLAS)
 
 target_compile_options(umfpack PRIVATE 
     $<$<OR:$<C_COMPILER_ID:Clang>,$<C_COMPILER_ID:GNU>,$<C_COMPILER_ID:IntelLLVM>>:-Wno-implicit-function-declaration>

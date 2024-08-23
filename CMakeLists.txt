@@ -22,8 +22,8 @@ endif()
 # set debug "d" postfix to all libraries
 set(CMAKE_DEBUG_POSTFIX "d")
 
-# find openblas
-find_package(OpenBLAS CONFIG REQUIRED)
+# find BLAS package
+find_package(BLAS REQUIRED)
 
 # modify install targets
 set(INSTALL_RUNTIME_DIR ${CMAKE_INSTALL_BINDIR})
