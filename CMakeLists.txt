@@ -55,8 +55,8 @@ set_target_properties(umfpack PROPERTIES
 )
 
 # set a project config file to enable linking to libraries in the build directory
-set(PROJECT_CONFIG_FILE "${CMAKE_BINARY_DIR}/umfpack-config.cmake")
-configure_package_config_file(cmake/umfpack-config.cmake.in
+set(PROJECT_CONFIG_FILE "${CMAKE_BINARY_DIR}/umfpackConfig.cmake")
+configure_package_config_file(cmake/umfpackConfig.cmake.in
   ${PROJECT_CONFIG_FILE}
   INSTALL_DESTINATION ${INSTALL_CONFIG_DIR}
 )
