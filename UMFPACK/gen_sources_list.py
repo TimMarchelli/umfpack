@@ -155,8 +155,6 @@ with open(os.path.join("cmake", cmakeName), "w") as fp:
     # write a header variable
     print("# get all headers", file=fp)
     print(f"file(GLOB {prefix}_public_headers \"${{CMAKE_CURRENT_SOURCE_DIR}}/Include/*.h\")", file=fp)
-    print(f"file(GLOB {prefix}_private_headers \"${{CMAKE_CURRENT_SOURCE_DIR}}/Source/*.h\")", file=fp)
-    print(f"list(APPEND {prefix}_headers ${{{prefix}_public_headers}} ${{{prefix}_private_headers}})", file=fp)
     print("", file=fp)
 
     tgtList = []
@@ -175,7 +173,6 @@ with open(os.path.join("cmake", cmakeName), "w") as fp:
         print(f"add_library({tgtName} OBJECT", file=fp)
         for src in objDict[key]:
             print(f"    ${{CMAKE_CURRENT_SOURCE_DIR}}/Source/{src}", file=fp)
-        print(f"    ${{{prefix}_headers}}", file=fp)
         print(")\n", file=fp)
 
         # add a compile definitions

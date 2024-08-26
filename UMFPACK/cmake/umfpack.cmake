@@ -1,7 +1,5 @@
 # get all headers
 file(GLOB umf_public_headers "${CMAKE_CURRENT_SOURCE_DIR}/Include/*.h")
-file(GLOB umf_private_headers "${CMAKE_CURRENT_SOURCE_DIR}/Source/*.h")
-list(APPEND umf_headers ${umf_public_headers} ${umf_private_headers})
 
 add_library(umf_DINT_objs OBJECT
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/umf_analyze.c
@@ -80,7 +78,6 @@ add_library(umf_DINT_objs OBJECT
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/umfpack_save_numeric.c
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/umfpack_load_symbolic.c
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/umfpack_save_symbolic.c
-    ${umf_headers}
 )
 
 target_compile_definitions(umf_DINT_objs PUBLIC BLAS_UNDERSCORE)
@@ -181,7 +178,6 @@ add_library(umf_DLONG_objs OBJECT
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/umfpack_save_numeric.c
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/umfpack_load_symbolic.c
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/umfpack_save_symbolic.c
-    ${umf_headers}
 )
 
 target_compile_definitions(umf_DLONG_objs PUBLIC BLAS_UNDERSCORE)
@@ -209,7 +205,6 @@ add_library(umf__NONE__objs OBJECT
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/umfpack_timer.c
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/umfpack_tictoc.c
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/umfpack_global.c
-    ${umf_headers}
 )
 
 target_compile_definitions(umf__NONE__objs PUBLIC BLAS_UNDERSCORE)
@@ -236,7 +231,6 @@ target_include_directories(umf__NONE__objs PRIVATE ${config_dir} ${CMAKE_CURRENT
 add_library(umf_DINT_CONJUGATE_SOLVE_objs OBJECT
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/umf_ltsolve.c
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/umf_utsolve.c
-    ${umf_headers}
 )
 
 target_compile_definitions(umf_DINT_CONJUGATE_SOLVE_objs PUBLIC BLAS_UNDERSCORE)
@@ -263,7 +257,6 @@ target_include_directories(umf_DINT_CONJUGATE_SOLVE_objs PRIVATE ${config_dir} $
 
 add_library(umf_DINT_DO_MAP_objs OBJECT
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/umf_triplet.c
-    ${umf_headers}
 )
 
 target_compile_definitions(umf_DINT_DO_MAP_objs PUBLIC BLAS_UNDERSCORE)
@@ -290,7 +283,6 @@ target_include_directories(umf_DINT_DO_MAP_objs PRIVATE ${config_dir} ${CMAKE_CU
 
 add_library(umf_DINT_DO_VALUES_objs OBJECT
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/umf_triplet.c
-    ${umf_headers}
 )
 
 target_compile_definitions(umf_DINT_DO_VALUES_objs PUBLIC BLAS_UNDERSCORE)
@@ -317,7 +309,6 @@ target_include_directories(umf_DINT_DO_VALUES_objs PRIVATE ${config_dir} ${CMAKE
 
 add_library(umf_DINT_DO_MAP_DO_VALUES_objs OBJECT
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/umf_triplet.c
-    ${umf_headers}
 )
 
 target_compile_definitions(umf_DINT_DO_MAP_DO_VALUES_objs PUBLIC BLAS_UNDERSCORE)
@@ -345,7 +336,6 @@ target_include_directories(umf_DINT_DO_MAP_DO_VALUES_objs PRIVATE ${config_dir} 
 
 add_library(umf_DINT_FIXQ_objs OBJECT
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/umf_assemble.c
-    ${umf_headers}
 )
 
 target_compile_definitions(umf_DINT_FIXQ_objs PUBLIC BLAS_UNDERSCORE)
@@ -372,7 +362,6 @@ target_include_directories(umf_DINT_FIXQ_objs PRIVATE ${config_dir} ${CMAKE_CURR
 
 add_library(umf_DINT_DROP_objs OBJECT
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/umf_store_lu.c
-    ${umf_headers}
 )
 
 target_compile_definitions(umf_DINT_DROP_objs PUBLIC BLAS_UNDERSCORE)
@@ -399,7 +388,6 @@ target_include_directories(umf_DINT_DROP_objs PRIVATE ${config_dir} ${CMAKE_CURR
 
 add_library(umf_DINT_WSOLVE_objs OBJECT
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/umfpack_solve.c
-    ${umf_headers}
 )
 
 target_compile_definitions(umf_DINT_WSOLVE_objs PUBLIC BLAS_UNDERSCORE)
@@ -427,7 +415,6 @@ target_include_directories(umf_DINT_WSOLVE_objs PRIVATE ${config_dir} ${CMAKE_CU
 add_library(umf_DLONG_CONJUGATE_SOLVE_objs OBJECT
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/umf_ltsolve.c
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/umf_utsolve.c
-    ${umf_headers}
 )
 
 target_compile_definitions(umf_DLONG_CONJUGATE_SOLVE_objs PUBLIC BLAS_UNDERSCORE)
@@ -454,7 +441,6 @@ target_include_directories(umf_DLONG_CONJUGATE_SOLVE_objs PRIVATE ${config_dir} 
 
 add_library(umf_DLONG_DO_MAP_objs OBJECT
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/umf_triplet.c
-    ${umf_headers}
 )
 
 target_compile_definitions(umf_DLONG_DO_MAP_objs PUBLIC BLAS_UNDERSCORE)
@@ -481,7 +467,6 @@ target_include_directories(umf_DLONG_DO_MAP_objs PRIVATE ${config_dir} ${CMAKE_C
 
 add_library(umf_DLONG_DO_VALUES_objs OBJECT
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/umf_triplet.c
-    ${umf_headers}
 )
 
 target_compile_definitions(umf_DLONG_DO_VALUES_objs PUBLIC BLAS_UNDERSCORE)
@@ -508,7 +493,6 @@ target_include_directories(umf_DLONG_DO_VALUES_objs PRIVATE ${config_dir} ${CMAK
 
 add_library(umf_DLONG_DO_MAP_DO_VALUES_objs OBJECT
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/umf_triplet.c
-    ${umf_headers}
 )
 
 target_compile_definitions(umf_DLONG_DO_MAP_DO_VALUES_objs PUBLIC BLAS_UNDERSCORE)
@@ -536,7 +520,6 @@ target_include_directories(umf_DLONG_DO_MAP_DO_VALUES_objs PRIVATE ${config_dir}
 
 add_library(umf_DLONG_FIXQ_objs OBJECT
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/umf_assemble.c
-    ${umf_headers}
 )
 
 target_compile_definitions(umf_DLONG_FIXQ_objs PUBLIC BLAS_UNDERSCORE)
@@ -563,7 +546,6 @@ target_include_directories(umf_DLONG_FIXQ_objs PRIVATE ${config_dir} ${CMAKE_CUR
 
 add_library(umf_DLONG_DROP_objs OBJECT
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/umf_store_lu.c
-    ${umf_headers}
 )
 
 target_compile_definitions(umf_DLONG_DROP_objs PUBLIC BLAS_UNDERSCORE)
@@ -590,7 +572,6 @@ target_include_directories(umf_DLONG_DROP_objs PRIVATE ${config_dir} ${CMAKE_CUR
 
 add_library(umf_DLONG_WSOLVE_objs OBJECT
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/umfpack_solve.c
-    ${umf_headers}
 )
 
 target_compile_definitions(umf_DLONG_WSOLVE_objs PUBLIC BLAS_UNDERSCORE)
@@ -618,7 +599,6 @@ target_include_directories(umf_DLONG_WSOLVE_objs PRIVATE ${config_dir} ${CMAKE_C
 add_library(umf_ZINT_CONJUGATE_SOLVE_objs OBJECT
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/umf_ltsolve.c
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/umf_utsolve.c
-    ${umf_headers}
 )
 
 target_compile_definitions(umf_ZINT_CONJUGATE_SOLVE_objs PUBLIC BLAS_UNDERSCORE)
@@ -645,7 +625,6 @@ target_include_directories(umf_ZINT_CONJUGATE_SOLVE_objs PRIVATE ${config_dir} $
 
 add_library(umf_ZINT_DO_MAP_objs OBJECT
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/umf_triplet.c
-    ${umf_headers}
 )
 
 target_compile_definitions(umf_ZINT_DO_MAP_objs PUBLIC BLAS_UNDERSCORE)
@@ -672,7 +651,6 @@ target_include_directories(umf_ZINT_DO_MAP_objs PRIVATE ${config_dir} ${CMAKE_CU
 
 add_library(umf_ZINT_DO_VALUES_objs OBJECT
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/umf_triplet.c
-    ${umf_headers}
 )
 
 target_compile_definitions(umf_ZINT_DO_VALUES_objs PUBLIC BLAS_UNDERSCORE)
@@ -764,7 +742,6 @@ add_library(umf_ZINT_objs OBJECT
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/umfpack_save_numeric.c
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/umfpack_load_symbolic.c
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/umfpack_save_symbolic.c
-    ${umf_headers}
 )
 
 target_compile_definitions(umf_ZINT_objs PUBLIC BLAS_UNDERSCORE)
@@ -790,7 +767,6 @@ target_include_directories(umf_ZINT_objs PRIVATE ${config_dir} ${CMAKE_CURRENT_S
 
 add_library(umf_ZINT_DO_MAP_DO_VALUES_objs OBJECT
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/umf_triplet.c
-    ${umf_headers}
 )
 
 target_compile_definitions(umf_ZINT_DO_MAP_DO_VALUES_objs PUBLIC BLAS_UNDERSCORE)
@@ -818,7 +794,6 @@ target_include_directories(umf_ZINT_DO_MAP_DO_VALUES_objs PRIVATE ${config_dir} 
 
 add_library(umf_ZINT_FIXQ_objs OBJECT
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/umf_assemble.c
-    ${umf_headers}
 )
 
 target_compile_definitions(umf_ZINT_FIXQ_objs PUBLIC BLAS_UNDERSCORE)
@@ -845,7 +820,6 @@ target_include_directories(umf_ZINT_FIXQ_objs PRIVATE ${config_dir} ${CMAKE_CURR
 
 add_library(umf_ZINT_DROP_objs OBJECT
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/umf_store_lu.c
-    ${umf_headers}
 )
 
 target_compile_definitions(umf_ZINT_DROP_objs PUBLIC BLAS_UNDERSCORE)
@@ -872,7 +846,6 @@ target_include_directories(umf_ZINT_DROP_objs PRIVATE ${config_dir} ${CMAKE_CURR
 
 add_library(umf_ZINT_WSOLVE_objs OBJECT
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/umfpack_solve.c
-    ${umf_headers}
 )
 
 target_compile_definitions(umf_ZINT_WSOLVE_objs PUBLIC BLAS_UNDERSCORE)
@@ -900,7 +873,6 @@ target_include_directories(umf_ZINT_WSOLVE_objs PRIVATE ${config_dir} ${CMAKE_CU
 add_library(umf_ZLONG_CONJUGATE_SOLVE_objs OBJECT
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/umf_ltsolve.c
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/umf_utsolve.c
-    ${umf_headers}
 )
 
 target_compile_definitions(umf_ZLONG_CONJUGATE_SOLVE_objs PUBLIC BLAS_UNDERSCORE)
@@ -927,7 +899,6 @@ target_include_directories(umf_ZLONG_CONJUGATE_SOLVE_objs PRIVATE ${config_dir} 
 
 add_library(umf_ZLONG_DO_MAP_objs OBJECT
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/umf_triplet.c
-    ${umf_headers}
 )
 
 target_compile_definitions(umf_ZLONG_DO_MAP_objs PUBLIC BLAS_UNDERSCORE)
@@ -954,7 +925,6 @@ target_include_directories(umf_ZLONG_DO_MAP_objs PRIVATE ${config_dir} ${CMAKE_C
 
 add_library(umf_ZLONG_DO_VALUES_objs OBJECT
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/umf_triplet.c
-    ${umf_headers}
 )
 
 target_compile_definitions(umf_ZLONG_DO_VALUES_objs PUBLIC BLAS_UNDERSCORE)
@@ -1046,7 +1016,6 @@ add_library(umf_ZLONG_objs OBJECT
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/umfpack_save_numeric.c
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/umfpack_load_symbolic.c
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/umfpack_save_symbolic.c
-    ${umf_headers}
 )
 
 target_compile_definitions(umf_ZLONG_objs PUBLIC BLAS_UNDERSCORE)
@@ -1072,7 +1041,6 @@ target_include_directories(umf_ZLONG_objs PRIVATE ${config_dir} ${CMAKE_CURRENT_
 
 add_library(umf_ZLONG_DO_MAP_DO_VALUES_objs OBJECT
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/umf_triplet.c
-    ${umf_headers}
 )
 
 target_compile_definitions(umf_ZLONG_DO_MAP_DO_VALUES_objs PUBLIC BLAS_UNDERSCORE)
@@ -1100,7 +1068,6 @@ target_include_directories(umf_ZLONG_DO_MAP_DO_VALUES_objs PRIVATE ${config_dir}
 
 add_library(umf_ZLONG_FIXQ_objs OBJECT
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/umf_assemble.c
-    ${umf_headers}
 )
 
 target_compile_definitions(umf_ZLONG_FIXQ_objs PUBLIC BLAS_UNDERSCORE)
@@ -1127,7 +1094,6 @@ target_include_directories(umf_ZLONG_FIXQ_objs PRIVATE ${config_dir} ${CMAKE_CUR
 
 add_library(umf_ZLONG_DROP_objs OBJECT
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/umf_store_lu.c
-    ${umf_headers}
 )
 
 target_compile_definitions(umf_ZLONG_DROP_objs PUBLIC BLAS_UNDERSCORE)
@@ -1154,7 +1120,6 @@ target_include_directories(umf_ZLONG_DROP_objs PRIVATE ${config_dir} ${CMAKE_CUR
 
 add_library(umf_ZLONG_WSOLVE_objs OBJECT
     ${CMAKE_CURRENT_SOURCE_DIR}/Source/umfpack_solve.c
-    ${umf_headers}
 )
 
 target_compile_definitions(umf_ZLONG_WSOLVE_objs PUBLIC BLAS_UNDERSCORE)

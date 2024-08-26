@@ -1,8 +1,5 @@
 project(AMD)
 
-# create header list
-file(GLOB amd_headers "Include/*.h")
-
 # list global sources
 set(amd_sources ${CMAKE_CURRENT_SOURCE_DIR}/Source/amd_global.c)
 
@@ -23,7 +20,7 @@ set(amd_obj_sources
 )
 
 # add a DINT target
-add_library(amd_DINT_objs OBJECT ${amd_obj_sources} ${amd_headers})
+add_library(amd_DINT_objs OBJECT ${amd_obj_sources})
 
 target_compile_definitions(amd_DINT_objs PRIVATE DINT)
 
@@ -33,7 +30,7 @@ target_include_directories(amd_DINT_objs PRIVATE
 )
 
 # add a DLONG target
-add_library(amd_DLONG_objs OBJECT ${amd_obj_sources} ${amd_headers})
+add_library(amd_DLONG_objs OBJECT ${amd_obj_sources})
 
 target_compile_definitions(amd_DLONG_objs PRIVATE DLONG)
 
@@ -43,7 +40,7 @@ target_include_directories(amd_DLONG_objs PRIVATE
 )
 
 # add no def targets
-add_library(amd_NONE_objs OBJECT ${amd_sources} ${amd_headers})
+add_library(amd_NONE_objs OBJECT ${amd_sources})
 
 target_include_directories(amd_NONE_objs PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/Include
