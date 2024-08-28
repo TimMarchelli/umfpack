@@ -57,16 +57,16 @@ set_target_properties(umfpack PROPERTIES
 # set a project config file to enable linking to libraries in the build directory
 set(PROJECT_CONFIG_FILE "${CMAKE_BINARY_DIR}/umfpackConfig.cmake")
 configure_package_config_file(cmake/umfpackConfig.cmake.in
-  ${PROJECT_CONFIG_FILE}
-  INSTALL_DESTINATION ${INSTALL_CONFIG_DIR}
+    ${PROJECT_CONFIG_FILE}
+    INSTALL_DESTINATION ${INSTALL_CONFIG_DIR}
 )
 
 # install library
 install(TARGETS umfpack
-  EXPORT umfpack-targets
-  RUNTIME DESTINATION ${INSTALL_RUNTIME_DIR}
-  LIBRARY DESTINATION ${INSTALL_LIBRARY_DIR}
-  ARCHIVE DESTINATION ${INSTALL_LIBRARY_DIR}
+    EXPORT umfpack-targets
+    RUNTIME DESTINATION ${INSTALL_RUNTIME_DIR}
+    LIBRARY DESTINATION ${INSTALL_LIBRARY_DIR}
+    ARCHIVE DESTINATION ${INSTALL_LIBRARY_DIR}
 )
 
 # install includes
@@ -74,12 +74,12 @@ install(FILES ${config_dir}/UFconfig.h AMD/Include/amd.h DESTINATION ${INSTALL_I
 
 # install the configs
 install(FILES
-  ${PROJECT_CONFIG_FILE}
-  DESTINATION ${INSTALL_CONFIG_DIR}
+    ${PROJECT_CONFIG_FILE}
+    DESTINATION ${INSTALL_CONFIG_DIR}
 )
 
 install(EXPORT umfpack-targets 
-  FILE umfpack-targets.cmake 
-  NAMESPACE umfpack::
-  DESTINATION ${INSTALL_CONFIG_DIR}
+    FILE umfpack-targets.cmake 
+    NAMESPACE umfpack::
+    DESTINATION ${INSTALL_CONFIG_DIR}
 )
