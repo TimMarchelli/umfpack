@@ -1,12 +1,9 @@
 @PACKAGE_INIT@
 
-# Include the exported CMake file
-get_filename_component(UMFPACK_CMAKE_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
-
 include(CMakeFindDependencyMacro)
 
 if(NOT TARGET umfpack::umfpack)
-    include("${UMFPACK_CMAKE_DIR}/umfpack-targets.cmake")
+    include("${CMAKE_CURRENT_LIST_DIR}/umfpack-targets.cmake")
 endif()
 
 check_required_components(umfpack)
