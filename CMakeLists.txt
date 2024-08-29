@@ -7,6 +7,7 @@ option(BUILD_DEMOS "Build AMD and UMFPACK demos." OFF)
 option(BUILD_SHARED_LIBS "Build shared libraries (.dll/.so) instead of static ones (.lib/.a)" ON)
 
 # default install location vars and configuration build tool
+include(CTest)
 include(GNUInstallDirs)
 include(CMakePackageConfigHelpers)
 
@@ -24,6 +25,18 @@ set(CMAKE_DEBUG_POSTFIX "d")
 
 # find BLAS package
 find_package(BLAS REQUIRED)
+set(BLAS_IMPORT_LIB BLAS::BLAS)
+
+# logic to determine type of BLAS and import it directly if possible. Importing directly populates more 
+# information about the import library than FindBLAS does. This is important in windows where we need to 
+# know the location of the imported DLL.
+if(BLAS_LIBRARIES MATCHES "[Oo][Pp][Ee][Nn][Bb][Ll][Aa][Ss]")
+    message(STATUS "--Using OpenBLAS import library.")
+    find_package(OpenBLAS REQUIRED)
+    set(BLAS_IMPORT_LIB OpenBLAS::OpenBLAS)
+
+# add more logic to directly import other BLAS implementations
+endif()
 
 # modify install targets
 set(INSTALL_RUNTIME_DIR ${CMAKE_INSTALL_BINDIR})
